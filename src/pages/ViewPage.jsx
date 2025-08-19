@@ -3,7 +3,6 @@ import './ViewPage.css';
 export default function ViewPage({ points, onBack }) {
   const {A,B,C} = points;
 
-  // פונקציות מתמטיות בפנים (בלי utils)
   const dist = (p, q) => Math.hypot(p.x - q.x, p.y - q.y);
   const toDeg = r => r * 180 / Math.PI;
   function lawOfCos(a,b,c){
