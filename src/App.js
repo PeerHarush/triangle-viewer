@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import InputPage from './pages/InputPage.jsx';
+import ViewPage from './pages/ViewPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+export default function App() {
+  const [page, setPage] = useState('input');
+  const [points, setPoints] = useState({
+    A: { x: 100, y: 100 },
+    B: { x: 500, y: 150 },
+    C: { x: 250, y: 600 }
+  });
+
+  return page === 'input' ? (
+    <InputPage points={points} setPoints={setPoints} onNext={() => setPage('view')} />
+  ) : (
+    <ViewPage points={points} onBack={() => setPage('input')} setPoints={setPoints} />
   );
 }
-
-export default App;
